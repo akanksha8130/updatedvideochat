@@ -21,12 +21,15 @@ navigator.mediaDevices
     .then((stream) => {
         myStream = stream;
         addVideoStream(myVideo, stream);
-
-      
-
-     
     })
 
+function addVideoStream(video, stream) {
+    video.srcObject = stream;
+    video.addEventListener("loadedmetadata", () => {
+        video.play();
+        $("#video_grid").append(video)
+    });
+};
 
 $(function () {
     $("#show_chat").click(function () {
@@ -54,12 +57,11 @@ $(function () {
         }
     })
 
-   
-
-  
-
 })
 
+peer.on("open", (id) => {
+    socket.emit("join-room", ROOM_ID, id, user);
+});
 
 socket.on("createMessage", (message, userName) => {
     $(".messages").append(`
