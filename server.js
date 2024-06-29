@@ -25,7 +25,7 @@ const transporter=nodemailer.createTransport({
     host:"smtp.gmail.com",
     auth:{
         user:'akanksha20shukla@gmail.com',
-        pass:"123456"
+        pass:"pmjq iphb xtsi pqia"
     },
     secure:true
 
